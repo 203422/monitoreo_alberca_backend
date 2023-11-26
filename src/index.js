@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const routes = require('./routes/routes')
 const createUser = require('./libs/initialSetup')
-const connection = require('./middlewares/connection');
+const simulation = require('./controllers/sensors.controller');
 
 
 require("dotenv").config();
@@ -22,4 +22,4 @@ app.listen(port, () => console.log('Servidor ejecutandose en el puerto ', port))
 //     .then(() => console.log('Conectado a la base de datos'))
 //     .catch((error) => console.log(error))
 
-connection.getData();
+simulation.connection();

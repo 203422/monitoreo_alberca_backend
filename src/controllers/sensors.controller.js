@@ -74,4 +74,6 @@ const datosPh = async (data) => {
     // console.log(`Nivel de pH: ${data}`)
 }
 
+module.exports = { datosAgua, datosTemperatura }
+
 

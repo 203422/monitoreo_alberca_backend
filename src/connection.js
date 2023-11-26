@@ -1,4 +1,4 @@
-const { SerialPort, ReadlineParser } = require('serialport')
+const { SerialPort, ReadlineParser } = require('serialport');
 
 const getData = () => {
     // const port = new SerialPort({ path: 'COM10', baudRate: 9600 })
@@ -26,22 +26,18 @@ const getData = () => {
                 case 'Temperatura':
                     const temperatura = valorLimpio;
                     console.log('Temperatura:', temperatura);
-                    console.log(typeof temperatura);
                     break;
                 case 'Distancia':
                     const distancia = valorLimpio;
                     console.log('Distancia:', distancia);
-                    console.log(typeof distancia);
                     break;
                 case 'Lluvia':
                     const valorLluvia = valorLimpio;
                     console.log('Valor del sensor de lluvia:', valorLluvia);
-                    console.log(typeof valorLluvia);
                     break;
                 case 'Ph':
                     const ph = valorLimpio;
                     console.log('Ph:', ph);
-                    console.log(typeof valorLimpio);
                     break;
                 default:
                     console.log('Nombre desconocido:', nombreLimpio);

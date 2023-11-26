@@ -18,8 +18,8 @@ app.use(routes);
 
 app.listen(port, () => console.log('Servidor ejecutandose en el puerto ', port))
 
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('Conectado a la base de datos'))
-    .catch((error) => console.log(error))
+// mongoose.connect(process.env.MONGODB_URI)
+//     .then(() => console.log('Conectado a la base de datos'))
+//     .catch((error) => console.log(error))
 
 simulation.simulateSensorData();

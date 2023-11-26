@@ -1,3 +1,8 @@
+const Agua = require('../models/agua');
+const Temperatura = require('../models/temperatura');
+const Ph = require('../models/ph');
+
+
 /*
         ------------SIMULACIÓN DE SENSORES-----------------------
 
@@ -72,8 +77,19 @@ const datosTemperatura = async (data) => {
 
 const datosPh = async (data) => {
     // console.log(`Nivel de pH: ${data}`)
+    try {
+        const existingPh = await Ph.findOne();
+        if (existingPh) {
+            await Ph.findByIdAndUpdate(existingPh._id, { valor: data });
+        } else {
+            const ph = new Ph({ valor: data });
+            await ph.save();
+        }
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-module.exports = { datosAgua, datosTemperatura }
+module.exports = { datosAgua, datosTemperatura, datosPh }
 
 

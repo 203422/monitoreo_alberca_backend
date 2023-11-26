@@ -6,7 +6,7 @@ const Readline = require('@serialport/parser-readline');
 // const Temperatura = require('../models/temperatura');
 
 
-const port = new SerialPort('COM10', { baudRate: 9600 });
+const port = new SerialPort('/dev/ttyACM0', { baudRate: 9600 });
 
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }));
 

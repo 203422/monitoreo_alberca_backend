@@ -22,5 +22,4 @@ app.listen(port, () => console.log('Servidor ejecutandose en el puerto ', port))
 //     .then(() => console.log('Conectado a la base de datos'))
 //     .catch((error) => console.log(error))
 
-
-connection.connection();
+connection.getData();

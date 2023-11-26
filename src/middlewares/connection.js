@@ -1,6 +1,6 @@
 const { SerialPort, ReadlineParser } = require('serialport')
 
-const connection = () => {
+const getData = () => {
     // const port = new SerialPort({ path: 'COM10', baudRate: 9600 })
     const port = new SerialPort({ path: '/dev/ttyACM0', baudRate: 9600 })
     const parser = new ReadlineParser()
@@ -51,4 +51,4 @@ const connection = () => {
     })
 }
 
-module.exports = { connection }
+module.exports = { getData }

@@ -13,23 +13,44 @@ const connection = () => {
     });
 
     parser.on('data', (data) => {
-        // console.log('Datos recibidos desde Arduino:', data);c
-        console.log(data)
+        // Dividir la cadena en líneas
+        const lineas = data.split('\n');
 
-        // const valoresSensores = data.trim().split(' ');
+        // Procesar cada línea
+        lineas.forEach((linea) => {
+            // Dividir cada línea en nombre y valor
+            const [nombre, valor] = linea.split(':');
 
-        // const temperatura = parseFloat(valoresSensores[0]);
-        // const distancia = parseFloat(valoresSensores[1]);
-        // const valorSensorLluvia = parseInt(valoresSensores[2]);
-        // const pHValue = parseFloat(valoresSensores[3]);
+            // Limpiar espacios alrededor del nombre y el valor
+            const nombreLimpio = nombre.trim();
+            const valorLimpio = parseFloat(valor.trim());
 
-        // console.log('Temperatura:', temperatura);
-        // console.log('Distancia:', distancia);
-        // console.log('Valor del sensor de lluvia:', valorSensorLluvia);
-        // console.log('pH:', pHValue);
-
-
-
+            // Guardar los datos en variables según el nombre
+            switch (nombreLimpio) {
+                case 'Temperatura':
+                    const temperatura = valorLimpio;
+                    console.log('Temperatura:', temperatura);
+                    // Puedes hacer más cosas con la variable 'temperatura' aquí
+                    break;
+                case 'Distancia':
+                    const distancia = valorLimpio;
+                    console.log('Distancia:', distancia);
+                    // Puedes hacer más cosas con la variable 'distancia' aquí
+                    break;
+                case 'Lluvia':
+                    const valorLluvia = valorLimpio;
+                    console.log('Valor del sensor de lluvia:', valorLluvia);
+                    // Puedes hacer más cosas con la variable 'valorLluvia' aquí
+                    break;
+                case 'Ph':
+                    const ph = valorLimpio;
+                    console.log('Ph:', ph);
+                    // Puedes hacer más cosas con la variable 'ph' aquí
+                    break;
+                default:
+                    console.log('Nombre desconocido:', nombreLimpio);
+            }
+        });
     });
 
     port.on('error', function (error) {

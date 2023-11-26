@@ -1,7 +1,6 @@
 const { SerialPort, ReadlineParser } = require('serialport')
 
 const getData = () => {
-    // const port = new SerialPort({ path: 'COM10', baudRate: 9600 })
     const port = new SerialPort({ path: '/dev/ttyACM0', baudRate: 9600 })
     const parser = new ReadlineParser()
 
@@ -17,7 +16,7 @@ const getData = () => {
         const lineas = data.split('\n');
 
         lineas.forEach((linea) => {
-            
+
             const [nombre, valor] = linea.split(':');
 
             const nombreLimpio = nombre.trim();
@@ -48,7 +47,8 @@ const getData = () => {
 
     port.on('error', function (error) {
         console.log(error);
-    })
+    });
+
 }
 
 module.exports = { getData }

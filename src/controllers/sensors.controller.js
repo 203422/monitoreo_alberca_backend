@@ -13,25 +13,23 @@ const connection = () => {
     });
 
     parser.on('data', (data) => {
-        // console.log('Datos recibidos desde Arduino:', data);
-        console.log(data);
+        // console.log('Datos recibidos desde Arduino:', data);c
+        console.log(data)
 
         const valoresSensores = data.trim().split(' ');
 
-        // if (valoresSensores.length === 4) {
-        //     const temperatura = parseFloat(valoresSensores[0]);
-        //     const distancia = parseFloat(valoresSensores[1]);
-        //     const valorSensorLluvia = parseInt(valoresSensores[2]);
-        //     const pHValue = parseFloat(valoresSensores[3]);
+        const temperatura = parseFloat(valoresSensores[0]);
+        const distancia = parseFloat(valoresSensores[1]);
+        const valorSensorLluvia = parseInt(valoresSensores[2]);
+        const pHValue = parseFloat(valoresSensores[3]);
 
-        //     console.log('Temperatura:', temperatura);
-        //     console.log('Distancia:', distancia);
-        //     console.log('Valor del sensor de lluvia:', valorSensorLluvia);
-        //     console.log('pH:', pHValue);
+        console.log('Temperatura:', temperatura);
+        console.log('Distancia:', distancia);
+        console.log('Valor del sensor de lluvia:', valorSensorLluvia);
+        console.log('pH:', pHValue);
 
-        // } else {
-        //     console.log('Error: Los datos no tienen el formato esperado.');
-        // }
+
+
     });
 
     port.on('error', function (error) {
@@ -120,4 +118,4 @@ const datosPh = async (data) => {
 
 
 
-module.exports = {connection }
+module.exports = { connection }

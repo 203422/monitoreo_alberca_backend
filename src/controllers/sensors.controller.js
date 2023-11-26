@@ -16,17 +16,17 @@ const connection = () => {
         // console.log('Datos recibidos desde Arduino:', data);c
         console.log(data)
 
-        const valoresSensores = data.trim().split(' ');
+        // const valoresSensores = data.trim().split(' ');
 
-        const temperatura = parseFloat(valoresSensores[0]);
-        const distancia = parseFloat(valoresSensores[1]);
-        const valorSensorLluvia = parseInt(valoresSensores[2]);
-        const pHValue = parseFloat(valoresSensores[3]);
+        // const temperatura = parseFloat(valoresSensores[0]);
+        // const distancia = parseFloat(valoresSensores[1]);
+        // const valorSensorLluvia = parseInt(valoresSensores[2]);
+        // const pHValue = parseFloat(valoresSensores[3]);
 
-        console.log('Temperatura:', temperatura);
-        console.log('Distancia:', distancia);
-        console.log('Valor del sensor de lluvia:', valorSensorLluvia);
-        console.log('pH:', pHValue);
+        // console.log('Temperatura:', temperatura);
+        // console.log('Distancia:', distancia);
+        // console.log('Valor del sensor de lluvia:', valorSensorLluvia);
+        // console.log('pH:', pHValue);
 
 
 

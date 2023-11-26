@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const routes = require('./routes/routes')
 const createUser = require('./libs/initialSetup')
-// const simulation = require('./controllers/sensors.controller');
-const connection = require('./middlewares/connection');
+const connection = require('./connection');
 
 
 require("dotenv").config();
@@ -22,6 +21,4 @@ app.listen(port, () => console.log('Servidor ejecutandose en el puerto ', port))
 // mongoose.connect(process.env.MONGODB_URI)
 //     .then(() => console.log('Conectado a la base de datos'))
 //     .catch((error) => console.log(error))
-
-// simulation.connection();
 connection.getData();

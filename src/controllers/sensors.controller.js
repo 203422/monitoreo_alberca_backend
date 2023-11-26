@@ -14,6 +14,22 @@ const connection = () => {
 
     parser.on('data', (data) => {
         console.log('Datos recibidos desde Arduino:', data);
+        const valoresSensores = data.split(' ');
+
+        // Supongamos que tienes 4 sensores
+        if (valoresSensores.length === 4) {
+            const sensor1 = parseFloat(valoresSensores[0]);
+            const sensor2 = parseFloat(valoresSensores[1]);
+            const sensor3 = parseFloat(valoresSensores[2]);
+            const sensor4 = parseFloat(valoresSensores[3]);
+
+            console.log('Valor del sensor 1:', sensor1);
+            console.log('Valor del sensor 2:', sensor2);
+            console.log('Valor del sensor 3:', sensor3);
+            console.log('Valor del sensor 4:', sensor4);
+        } else {
+            console.log('Error: Los datos no tienen el formato esperado.');
+        }
     });
 
     port.on('error', function (error) {

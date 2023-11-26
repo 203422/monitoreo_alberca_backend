@@ -1,28 +1,26 @@
-const SerialPort = require('serialport');
-const Readline = require('@serialport/parser-readline');
+const { SerialPort, ReadlineParser } = require('serialport')
 
-// const Agua = require('../models/agua');
-// const Ph = require('../models/ph');
-// const Temperatura = require('../models/temperatura');
+const connection = () => {
+    // const port = new SerialPort({ path: 'COM10', baudRate: 9600 })
+    const port = new SerialPort({ path: '/dev/ttyACM0', baudRate: 9600 })
+    const parser = new ReadlineParser()
 
-
-const port = new SerialPort('/dev/ttyACM0', { baudRate: 9600 });
-
-const parser = port.pipe(new Readline({ delimiter: '\r\n' }));
+    port.pipe(parser);
 
 
-parser.on('open', function () {
-    console.log('connection is opened');
-});
+    parser.on('open', function () {
+        console.log('connection is opened');
+    });
 
-parser.on('data', (data) => {
-    // console.log('Datos recibidos desde Arduino:', data);
-    console.log(data);
-});
+    parser.on('data', (data) => {
+        // console.log('Datos recibidos desde Arduino:', data);
+        console.log(data);
+    });
 
-port.on('error', function (error) {
-    console.log(error);
-}) 
+    port.on('error', function (error) {
+        console.log(error);
+    })
+}
 
 /*
         ------------SIMULACIÓN DE SENSORES-----------------------
@@ -87,10 +85,10 @@ const datosTemperatura = async (data) => {
 
     try {
         const existingTemperatura = await Temperatura.findOne();
-        if(existingTemperatura) {
-            await Temperatura.findByIdAndUpdate(existingTemperatura._id, {valor: data});
+        if (existingTemperatura) {
+            await Temperatura.findByIdAndUpdate(existingTemperatura._id, { valor: data });
         } else {
-            const temperatura = new Temperatura({valor: data});
+            const temperatura = new Temperatura({ valor: data });
             await temperatura.save();
         }
     } catch (error) {
@@ -105,4 +103,4 @@ const datosPh = async (data) => {
 
 
 
-module.exports = { simulateSensorData }
+module.exports = {connection }

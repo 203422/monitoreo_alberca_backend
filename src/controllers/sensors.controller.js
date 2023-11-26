@@ -13,8 +13,7 @@ const connection = () => {
     });
 
     parser.on('data', (data) => {
-        // console.log('Datos recibidos desde Arduino:', data);
-        console.log(data);
+        console.log('Datos recibidos desde Arduino:', data);
     });
 
     port.on('error', function (error) {

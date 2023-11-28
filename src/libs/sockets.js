@@ -1,4 +1,5 @@
 const { SerialPort, ReadlineParser } = require('serialport');
+const sensorControllers = require('../controllers/sensors.controller');
 // const { datosAgua, datosTemperatura, datosPh } = require('./controllers/sensors.controller');
 
 const sockets = (io) => {
@@ -29,21 +30,22 @@ const sockets = (io) => {
             case 'Temperatura':
               const temperatura = valorLimpio;
               console.log('Temperatura:', temperatura);
-              // datosTemperatura(temperatura);
+              sensorControllers.datosTemperatura(temperatura);
               break;
             case 'Distancia':
               const distancia = valorLimpio;
               console.log('Distancia:', distancia);
-              // datosAgua(distancia);
+              sensorControllers.datosAgua(distancia);
               break;
             case 'Lluvia':
               const valorLluvia = valorLimpio;
               console.log('Valor del sensor de lluvia:', valorLluvia);
+              sensorControllers.datosLluvia(valorLluvia);
               break;
             case 'Ph':
               const ph = valorLimpio;
               console.log('Ph:', ph);
-              // datosPh(ph);
+              sensorControllers.datosPh(ph);
               break;
             default:
               console.log('Nombre desconocido:', nombreLimpio);

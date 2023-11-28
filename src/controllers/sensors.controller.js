@@ -1,6 +1,7 @@
 const Agua = require('../models/agua');
 const Temperatura = require('../models/temperatura');
 const Ph = require('../models/ph');
+const Lluvia = require('../models/lluvia');
 
 const datosAgua = async (data) => {
 
@@ -47,6 +48,20 @@ const datosPh = async (data) => {
     }
 }
 
-module.exports = { datosAgua, datosTemperatura, datosPh }
+const datosLluvia = async (data) => {
+    try {
+        const existingLluvia = await Lluvia.findOne();
+        if (existingLluvia) {
+            await Lluvia.findByIdAndUpdate(existingLluvia._id, { valor: data });
+        } else {
+            const lluvia = new Lluvia({ valor: data });
+            await lluvia.save();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = { datosAgua, datosTemperatura, datosPh, datosLluvia }
 
 

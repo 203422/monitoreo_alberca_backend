@@ -40,7 +40,7 @@ const sockets = (io) => {
               console.log('Distancia:', distancia);
               io.emit('agua-data', {
                 sensor: 'agua',
-                value: distancia
+                value: 30 - distancia,
               });
               sensorControllers.datosAgua(distancia);
               break;

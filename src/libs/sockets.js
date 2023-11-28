@@ -33,7 +33,7 @@ const sockets = (io) => {
               sensorControllers.datosTemperatura(temperatura);
               io.emit('temperatura-data', {
                 sensor: 'temperatura',
-                value: temperaturaAgua
+                value: temperatura
               });
               break;
             case 'Distancia':
@@ -41,7 +41,7 @@ const sockets = (io) => {
               console.log('Distancia:', distancia);
               io.emit('agua-data', {
                 sensor: 'agua',
-                value: nivelAgua
+                value: distancia
               });
               sensorControllers.datosAgua(distancia);
               break;
@@ -51,7 +51,7 @@ const sockets = (io) => {
               sensorControllers.datosLluvia(valorLluvia);
               io.emit('lluvia-data', {
                 sensor: 'lluvia',
-                value: lluvia
+                value: valorLluvia
               });
               break;
             case 'Ph':

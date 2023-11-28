@@ -38,10 +38,9 @@ const sockets = (io) => {
             case 'Distancia':
               const distancia = valorLimpio;
               console.log('Distancia:', distancia);
-              let cantidad = 30 - distancia;
               io.emit('agua-data', {
                 sensor: 'agua',
-                value: cantidad,
+                value: distancia
               });
               sensorControllers.datosAgua(distancia);
               break;

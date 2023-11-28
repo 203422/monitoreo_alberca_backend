@@ -30,11 +30,3 @@ mongoose.connect(process.env.MONGODB_URI)
 
 createUser.createUser();
 sockets.sockets(io);
-
-// connection.getData();
-
-
-// io.on('connect', () => {
-//     console.log('Usuario conectado');
-// })
-

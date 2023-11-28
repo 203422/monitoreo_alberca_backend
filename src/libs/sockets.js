@@ -21,31 +21,34 @@ const sockets = (io) => {
 
         const [nombre, valor] = linea.split(':');
 
-        const nombreLimpio = nombre.trim();
-        const valorLimpio = parseFloat(valor.trim());
+        if (nombre && valor) {
+          const nombreLimpio = nombre.trim();
+          const valorLimpio = parseFloat(valor.trim());
 
-        switch (nombreLimpio) {
-          case 'Temperatura':
-            const temperatura = valorLimpio;
-            console.log('Temperatura:', temperatura);
-            // datosTemperatura(temperatura);
-            break;
-          case 'Distancia':
-            const distancia = valorLimpio;
-            console.log('Distancia:', distancia);
-            // datosAgua(distancia);
-            break;
-          case 'Lluvia':
-            const valorLluvia = valorLimpio;
-            console.log('Valor del sensor de lluvia:', valorLluvia);
-            break;
-          case 'Ph':
-            const ph = valorLimpio;
-            console.log('Ph:', ph);
-            // datosPh(ph);
-            break;
-          default:
-            console.log('Nombre desconocido:', nombreLimpio);
+          switch (nombreLimpio) {
+            case 'Temperatura':
+              const temperatura = valorLimpio;
+              console.log('Temperatura:', temperatura);
+              // datosTemperatura(temperatura);
+              break;
+            case 'Distancia':
+              const distancia = valorLimpio;
+              console.log('Distancia:', distancia);
+              // datosAgua(distancia);
+              break;
+            case 'Lluvia':
+              const valorLluvia = valorLimpio;
+              console.log('Valor del sensor de lluvia:', valorLluvia);
+              break;
+            case 'Ph':
+              const ph = valorLimpio;
+              console.log('Ph:', ph);
+              // datosPh(ph);
+              break;
+            default:
+              console.log('Nombre desconocido:', nombreLimpio);
+
+          }
         }
       });
     });
